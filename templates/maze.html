@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <div id="maze-wrapper">
+        <nav>
+            <p id="username_nav">@{{username}}</p>
+            <ul class="dropdown">
+                <li id="settings">⚙️</li>
+                <ul class="dropdown-content">
+                    <button type="button" id="logout">Logout</button>
+                </ul>
+            </ul>
+        </nav>
+        <h1 id="mazeh1">Maze Generator</h1>
+        <div id="scoreboard">
+            <p id="score-title">Scoreboard</p>
+            <hr>
+            {% for element in scores%}
+            <p>{{element}}</p>
+            {% endfor%}
+        </div>
+        <div id="maze">
+            {% for row in buttons%}
+            <div class="rows">
+                {% for element in row%}
+                <button class="{{element}}" type="button"></button>
+                {% endfor%}
+            </div>
+            {% endfor%}
+        </div>
+        <div id="panel">
+            <button type="button" id="generate">Generate Maze</button>
+            <button type="button" id="check">Check Maze</button>
+            <button type="button" id="complete">Solve Maze</button>
+        </div>
+        <script src="{{url_for('static', filename='app.js')}}"></script>
+    </div>
+</body>
+</html>
